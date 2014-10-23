@@ -1,0 +1,40 @@
+{
+  "nodes":[
+    {"name":"A","score":1,"group":1},
+    {"name":"B","score":1,"group":1},
+    {"name":"C","score":1,"group":1},
+    {"name":"D","score":1,"group":1},
+    {"name":"E","score":1,"group":1},
+    {"name":"F","score":1,"group":1},
+    {"name":"G","score":1,"group":1},
+    {"name":"H","score":1,"group":1},
+    {"name":"I","score":1,"group":1},
+    {"name":"Milltown","score":1,"group":2},
+    {"name":"Tyler's","score":1,"group":2},
+    {"name":"Beer Study","score":1,"group":2},
+    {"name":"Steel String","score":1,"group":2},
+    {"name":"Weaver Street Market","score":1,"group":2},
+    {"name":"Harris Teeter","score":1,"group":2},
+    {"name":"Food Lion","score":1,"group":2}
+  ],
+  "links":[
+    {"source":0,"target":9},
+    {"source":0,"target":10},
+    {"source":0,"target":11},
+    {"source":1,"target":9},
+    {"source":1,"target":10},
+    {"source":1,"target":11},
+    {"source":1,"target":12},
+    {"source":2,"target":11},
+    {"source":2,"target":12},
+    {"source":3,"target":14},
+    {"source":4,"target":14},
+    {"source":4,"target":15},
+    {"source":5,"target":11},
+    {"source":5,"target":13},
+    {"source":6,"target":9},
+    {"source":6,"target":14},
+    {"source":7,"target":15},
+    {"source":8,"target":15}
+  ]
+}
