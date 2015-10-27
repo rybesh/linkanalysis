@@ -87,8 +87,7 @@ d3.json('pagerank.json', function(error, graph) {
     nodes.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
   });
 
-  $('#next').click(function() {
-
+  function iterate() {
     // calculate new scores
     nodes.data(
       nodes.data()
@@ -125,6 +124,12 @@ d3.json('pagerank.json', function(error, graph) {
     .attr('r', function(d) {
       return d.score * nodes[0].length * nodesize
     })
+  }
 
+  iterate()
+
+  $('#next').click(function() {
+    iterate()
+    $('#k').text(parseInt($('#k').text(), 10) + 1)
   });
 });

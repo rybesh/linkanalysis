@@ -12,10 +12,27 @@
   stroke: #000;
 }
 
+.key {
+  list-style-type: none;
+  padding: 0px;
+  margin: 10px 4px;
+}
+
+.swatch {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+}
+
 </style>
 <body>
+<i>k</i>=<span id="k">0</span>
 <button id="next">next</button>
 <input type="checkbox" id="normalize">normalize?
+<ul class="key">
+<li><div class="swatch" style="background-color: #2062A5"></div> hubs</li>
+<li><div class="swatch" style="background-color: #F26A11"></div> authorities</li>
+</ul>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
 <script src="hubauth.js"></script>

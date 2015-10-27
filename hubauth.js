@@ -123,6 +123,7 @@ d3.json('hubauth.json', function(error, graph) {
       if (norm) { normalize(auths) }
 
       state = 'hubs';
+      $('#k').text(parseInt($('#k').text(), 10) + 1)
 
     } else { // state == 'hubs'
 
