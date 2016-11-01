@@ -9,7 +9,7 @@ var force = d3.layout.force()
             .linkDistance(100)
             .size([width, height]);
 
-var svg = d3.select('body').append('svg')
+var svg = d3.select('#graph').append('svg')
           .attr('width', width)
           .attr('height', height);
 

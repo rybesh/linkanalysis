@@ -14,8 +14,20 @@
 
 </style>
 <body>
-<i>k</i>=<span id="k">0</span>
-<button id="next">next</button>
+<div id="graph">
+<div><i>k</i>=<span id="k">0</span>
+<button id="next">next</button></div>
+</div>
+<ol>
+<li>In a network with <i>n</i> nodes, we assign all nodes the same initial PageRank, <i>1 / n</i>.</li>
+<li>We choose a number of steps, <i>k</i>.</li>
+<li>We then perform a sequence of <i>k</i> updates to the PageRank values, using the following rule for each update:
+<ol style="list-style: lower-alpha">
+<li>Each page divides its current PageRank equally across its outgoing links and passes these equal shares to the pages it points to.</li>
+<li>If a page has no outgoing links, it passes all its current PageRank to itself.</li>
+<li>Each page updates its new PageRank to be the sum of the shares it receives.</li>
+</ol>
+</ol>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>
 <script src="pagerank.js"></script>
