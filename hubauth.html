@@ -27,7 +27,7 @@
 </style>
 <body>
 <div id="graph">
-<i>k</i>=<span id="k">0</span>
+<i>i</i>=<span id="k">0</span>
 <button id="next">next</button>
 <input type="checkbox" id="normalize">normalize?
 <ul class="key">
@@ -40,11 +40,11 @@
 <li>Choose a number of steps, <i>k</i>.</li>
 <li>Perform a sequence of <i>k</i> hub-authority updates. Each update works as follows:
 <ol style="list-style: lower-alpha">
-<li>Apply the <i>Authority Update Rule</i> to the current set of scores: For each page <i>p</i>, update the authority score to be the sum of the <b>hub</b> scores of all the pages <i>that point to it</i>.</li>
-<li>Then apply the <i>Hub Update Rule</i> using the resulting set of scores: For each page <i>p</i>, update the hub score to be the sum of the <b>authority</b> scores of all the pages <i>that it points to</i>.</li>
+<li>Apply the <i>Authority Update Rule</i> to the current set of scores: For each document <i>p</i>, update the authority score to be the sum of the <b>hub</b> scores of all the documents <i>that link to it</i>.</li>
+<li>Then apply the <i>Hub Update Rule</i> using the resulting set of scores: For each document <i>p</i>, update the hub score to be the sum of the <b>authority</b> scores of all the documents <i>that it links to</i>.</li>
 </ol>
 </li>
-<li>Normalize</li> 
+<li>(Optionally) normalize scores.</li> 
 </ol>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.3/d3.min.js"></script>

@@ -15,6 +15,9 @@ var svg = d3.select('#graph').append('svg')
 
 var nodesize = 10
 
+var scale = false
+var s = 0.8
+
 function updateScoreLabels(nodes) {
   nodes.select('.score').remove()
   nodes.append('text')
@@ -33,8 +36,8 @@ svg.append('svg:defs').selectAll('marker')
     .attr('id', String)
     .attr('viewBox', '0 -5 10 10')
     .attr('refX', 26)
-    .attr('markerWidth', 6)
-    .attr('markerHeight', 6)
+    .attr('markerWidth', 12)
+    .attr('markerHeight', 12)
     .attr('orient', 'auto')
   .append('svg:path')
     .attr('d', 'M0,-5L10,0L0,5');
@@ -84,8 +87,15 @@ d3.json('pagerank.json', function(error, graph) {
     .attr('x2', function(d) { return d.target.x; })
     .attr('y2', function(d) { return d.target.y; });
 
-    nodes.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+    nodes.attr('transform', function(d) {
+      return 'translate(' + d.x + ',' + d.y + ')';
+    });
   });
+
+  $('#scale').change(function() {
+    scale = $(this).prop('checked')
+    $(this).prop('disabled', true)
+  })
 
   function iterate() {
     // calculate new scores
@@ -93,20 +103,37 @@ d3.json('pagerank.json', function(error, graph) {
       nodes.data()
       .map(function (node) {
         if (node.score === undefined) {
+          // set initial scores to 1 / n
           node.newscore = 1.0 / nodes[0].length
         } else {
-          node.newscore = d3.sum(graph.links
-                                 .filter(function (link) { return link.target.index == node.index; })
-                                 .map(function(link) {
-                                   return link.source.score / link.source.outlinks
-                                 }))
+          // set new score to be sum of incoming contributions
+          node.newscore = d3.sum(
+            graph.links
+              .filter(function (link) {
+                return link.target.index == node.index;
+              })
+              .map(function(link) {
+                return link.source.score / link.source.outlinks
+              })
+          )
           if (node.outlinks === 0) {
             // nodes with no outlinks pass all pagerank to themselves
             node.newscore += node.score
           }
         }
         return node;
-      }))
+      })
+    )
+
+    if (scale) {
+      nodes.data(
+        nodes.data()
+        .map(function (node) {
+          node.newscore = (node.newscore * s) + ((1 - s) / nodes[0].length)
+          return node
+        })
+      )
+    }
 
     nodes.data(
       nodes.data()
@@ -129,6 +156,7 @@ d3.json('pagerank.json', function(error, graph) {
   iterate()
 
   $('#next').click(function() {
+    $('#scale').prop('disabled', true)
     iterate()
     $('#k').text(parseInt($('#k').text(), 10) + 1)
   });
